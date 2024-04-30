@@ -1,0 +1,35 @@
+body {
+    font-family: arial;
+    color: white;
+    background-color: #131212;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    text-align: center;
+}
+
+img {
+    margin: 5px;
+}
+
+.video-meio {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.botao {
+    text-align: center;
+}
