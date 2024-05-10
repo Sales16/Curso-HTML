@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 01</title>
+    <style>
+        body {
+            background-color: #c1c1c1;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background-color: white;
+            border-radius: 10px;
+            width: 500px;
+            padding: 15px;
+            margin: auto;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.397);
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+        }
+        a {
+            display: block;
+            width: 200px;
+            margin: auto;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 10px;
+
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Verificador de Idade</h1>
+    </header>
+    <section>
+        <div>
+            <p>Ano de Nascimento:
+                <input type="number" name="txtano" id="txtano" min="0">
+            </p>
+            <p>
+                Sexo:
+                <input type="radio" name="radsex" id="mas" checked>
+                <label for="mas">Masculino</label>
+                <input type="radio" name="radsex" id="fem">
+                <label for="fem">Feminino</label>
+            </p>
+            <p>
+                <input type="button" value="Detectar" onclick="detectar()">
+            </p>
+        </div>
+        <div id="res">
+
+        </div>
+    </section>
+    <div>   
+        <a href="index.html"><button>Index</button></a>
+    </div>
+    <footer>
+        <p>&copy; Eduardo Sales</p>
+    </footer>
+    <script>
+        function detectar() {
+            var data = new Date()
+            var ano = data.getFullYear()
+            var fano = document.getElementById('txtano').value
+            var res = document.getElementById('res')
+
+            if (fano > ano || fano == '' || fano < 0) {
+                alert('[ERRO] Verifique os dados e tente novamente!')
+            }
+            else {
+                var idade = ano - fano
+                var sexo = document.getElementsByName('radsex')
+                var genero = ''
+                var img = document.createElement('img')
+                img.setAttribute('id', 'foto')
+
+                if (sexo[0].checked) {
+                    genero = 'Homem'
+                    if (idade >= 0 && idade < 18) {
+                        img.setAttribute('src', 'imgs/crianca-m.png')
+                    }
+                    else if (idade < 50) {
+                        img.setAttribute('src', 'imgs/adulto-m.png')
+                    }
+                    else {
+                        img.setAttribute('src', 'imgs/idoso-m.png')
+                    }
+                }
+                else {
+                    genero = 'Mulher'
+                    if (idade >= 0 && idade < 18) {
+                        img.setAttribute('src', 'imgs/crianca-f.png')
+                    }
+                    else if (idade < 50) {
+                        img.setAttribute('src', 'imgs/adulto-f.png')
+                    }
+                    else {
+                        img.setAttribute('src', 'imgs/idoso-f.png')
+                    }
+                }
+                res.style.textAlign = 'center'
+                res.innerHTML = `<p>Detectamos ${genero} com ${idade} anos</p>`
+                res.appendChild(img)
+            }
+        }
+
+        function verificar() {
+            var data = new Date()
+            var ano = data.getFullYear()
+            var fano = document.getElementById('txtano').value
+            var res = document.querySelector('div#res')
+
+            console.log(fano)
+
+            if (fano == '' || Number(fano.value) > ano) {
+                window.alert('[ERRO] Verifique os dados e tente novamente')
+            } else {
+                var fsex = document.getElementsByName('radsex')
+                var idade = ano - Number(fano)
+                var genero = ''
+                var imge = document.createElement('img')
+                imge.setAttribute('id', 'foto')
+                console.log(imge.setAttribute = ('id', 'foto'))
+                if (fsex[0].checked) {
+                    genero = 'Homem'
+                    if (idade >= 0 && idade < 18) {
+                        imge.setAttribute('src', 'imgs/crianca-m.png')
+                    } else if (idade < 50) {
+                        imge.setAttribute('src', 'imgs/adulto-m.png')
+                    } else {
+                        imge.setAttribute('src', 'imgs/idoso-m.png')
+                    }
+                } else if (fsex[1].checked) {
+                    genero = 'Mulher'
+                    if (idade >= 0 && idade < 18) {
+                        imge.setAttribute('src', 'imgs/crianca-f.png')
+                    } else if (idade < 50) {
+                        imge.setAttribute('src', 'imgs/adulto-f.png')
+                    } else {
+                        imge.setAttribute('src', 'imgs/idoso-f.png')
+                    }
+                }
+                res.style.textAlign = 'center'
+                res.innerHTML = `<p>Detectamos ${genero} com ${idade} anos.</p>`
+                res.appendChild(imge)
+            }
+        }
+    </script>
+</body>
+
+</html>
