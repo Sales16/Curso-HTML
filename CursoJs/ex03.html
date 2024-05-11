@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 01</title>
+    <style>
+        body {
+            background-color: #c1c1c1;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background-color: white;
+            border-radius: 10px;
+            width: 500px;
+            padding: 15px;
+            margin: auto;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.397);
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+        }
+
+        input {
+            display: block;
+        }
+
+        a {
+            display: block;
+            width: 200px;
+            margin: auto;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 10px;
+
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Vamos Contar</h1>
+    </header>
+    <section>
+        <div>
+            <p>Inicio: <input type="number" name="inicio" id="inicio"></p>
+            <p>Fim: <input type="number" name="fim" id="fim"></p>
+            <p>Passo: <input type="number" name="passo" id="passo"></p>
+            <input type="button" value="Contar" onclick="contar()">
+        </div>
+        <div id="res">
+
+        </div>
+    </section>
+    <div>
+        <a href="index.html"><button>Index</button></a>
+    </div>
+    <footer>
+        <p>&copy; Eduardo Sales</p>
+    </footer>
+    <script>
+        function contar() {
+            let i = document.getElementById('inicio').value
+            let f = document.getElementById('fim').value
+            let p = document.getElementById('passo').value
+            let res = document.getElementById('res')
+
+
+            if (i.length == 0 || fim.length == 0 || p.length == 0) {
+                alert('[ERRO] Faltam dados')
+                res.innerHTML = 'Impossivel contar'
+            }
+            else {
+                if (p <= 0) {
+                    alert('Passo inválido. Considerando passo = 1')
+                    p = 1
+                }
+                res.innerHTML = 'Contando: <br>'
+                let ini = Number(i)
+                let fim = Number(f)
+                let pas = Number(p)
+
+                if (ini < fim) {
+                    for (let contador = ini; contador <= fim; contador += pas) {
+                        res.innerHTML += ` ${contador} \u{1F449}`
+                    }
+                }
+                else {
+                    for (contador = ini; contador >= fim; contador -= pas) {
+                        res.innerHTML += ` ${contador} \u{1F449}`
+                    }
+                }
+                res.innerHTML += `\u{1F3C1}`
+            }
+        }
+    </script>
+</body>
+
+</html>

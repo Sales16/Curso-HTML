@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 01</title>
+    <style>
+        body {
+            background-color: #c1c1c1;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        header {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background-color: white;
+            border-radius: 10px;
+            width: 500px;
+            padding: 15px;
+            margin: auto;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.397);
+        }
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+        }
+
+        input[type='button'] {
+            text-align: center;
+            padding: 8px;
+        }
+        select {
+            margin-top: 15px;
+            padding: 10px;
+        }
+        a {
+            display: block;
+            width: 200px;
+            margin: auto;
+            text-align: center;
+            margin-top: 20px;
+            border-radius: 10px;
+
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tabuada</h1>
+    </header>
+    <section>
+        <div>
+            <p>Número: <input type="number" name="num" id="txtn"></p>
+            <input type="button" value="Gerar Tabuada" onclick="tabuada()">
+        </div>
+        <div>
+            <select name="tabuada" id="seltab" size="10">
+                <option>Digite um número acima</option>
+            </select>
+        </div>
+    </section>
+    <div>   
+        <a href="index.html"><button>Index</button></a>
+    </div>
+    <footer>
+        <p>&copy; Eduardo Sales</p>
+    </footer>
+    <script>
+        function tabuada(){
+            let num = document.getElementById('txtn').value
+            let tab = document.getElementById('seltab')
+            if (num == '') {
+                alert('Por favor, digite um número')
+            }else {
+                let n = Number(num)
+                let c = 1
+                tab.innerHTML = ''
+                while (c <= 10) {
+                    let item = document.createElement('option')
+                    item.text = `${n} x ${c} = ${n*c}`
+                    item.value = `tab${c}`
+                    tab.appendChild(item)
+                    c++
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
